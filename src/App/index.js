@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StudentCard from '../components/StudentCard';
 import { getStudents } from '../helpers/data/StudentData';
-import StudentForm from '../StudentForm';
+import StudentForm from '../components/StudentForm';
 import './App.scss';
 
 function App() {
@@ -12,19 +12,25 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
-      <StudentForm formTitle='Form Title'/>
+    <>
+      <StudentForm
+        formTitle='Add Student'
+        setStudents={setStudents}
+      />
       <hr/>
+      <div className="card-container">
       {students.map((studentInfo) => (
         <StudentCard
           key={studentInfo.firebaseKey}
+          firebaseKey={studentInfo.firebaseKey}
           name={studentInfo.name}
           teacher={studentInfo.teacher}
           grade={Number(studentInfo.grade)}
-          handleClick={() => console.warn(`${studentInfo.name}'s teacher is ${studentInfo.teacher}`)}
+          setStudents={setStudents}
         />
       ))}
-    </div>
+      </div>
+    </>
   );
 }
 
