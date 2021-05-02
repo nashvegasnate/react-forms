@@ -35,56 +35,63 @@ const StudentForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // add student to firebase
     if (student.firebaseKey) {
-      updateStudent(student).then((studentArray) => setStudents(studentArray));
+      // make call to updateStudent to update student and rerender the DOM
+      updateStudent(student).then(setStudents); // this is the same as below, just shorthand.
+      // updateStudent(student).then((studentArray) => setStudents(studentArray));
     } else {
-      addStudent(student).then((studentArray) => setStudents(studentArray));
+      addStudent(student).then(setStudents); // this is the same as below, just shorthand.
+      // addStudent(student).then((studentArray) => setStudents(studentArray));
+
+      // clear inputs
+      setStudent({
+        name: '',
+        teacher: '',
+        grade: 0,
+        firebaseKey: null
+      });
     }
   };
 
   return (
     <div className='student-form'>
-      <Form
-        id='addStudentForm'
-        autoComplete='off'
-        onSubmit={handleSubmit}
-      ><h2>{formTitle}</h2>
-      <FormGroup>
-        <Label for="name">Name:</Label>
-        <Input
-          name='name'
-          id='name'
-          value={student.name}
-          type='text'
-          placeholder='Enter Student Name'
-          onChange={handleInputChange}
-        />
-      </FormGroup>
+      <Form id='addStudentForm' autoComplete='off' onSubmit={handleSubmit}>
+        <h2>{formTitle}</h2>
+        <FormGroup>
+          <Label for="name">Name:</Label>
+          <Input
+            name='name'
+            id='name'
+            value={student.name}
+            type='text'
+            placeholder='Enter a Student Name'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
 
-      <FormGroup>
-        <Label for="teacher">Teacher:</Label>
-        <Input
-          name='teacher'
-          id='teacher'
-          value={student.teacher}
-          type='text'
-          placeholder='Enter Teacher Name'
-          onChange={handleInputChange}
-        />
-      </FormGroup>
+        <FormGroup>
+          <Label for="teacher">Teacher:</Label>
+          <Input
+            name='teacher'
+            id='teacher'
+            value={student.teacher}
+            type='text'
+            placeholder='Enter a Teacher Name'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
 
-      <FormGroup>
-        <Label for="grade">Grade:</Label>
-        <Input
-          name='grade'
-          id='grade'
-          value={student.grade}
-          type='number'
-          placeholder='Enter Grade'
-          onChange={handleInputChange}
-        />
-      </FormGroup>
+        <FormGroup>
+          <Label for="grade">Grade:</Label>
+          <Input
+            name='grade'
+            id='grade'
+            value={student.grade}
+            type='number'
+            placeholder='Enter a Grade'
+            onChange={handleInputChange}
+          />
+        </FormGroup>
 
         <Button type='submit'>Submit</Button>
       </Form>
