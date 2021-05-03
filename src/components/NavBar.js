@@ -6,7 +6,9 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
+  Button
 } from 'reactstrap';
+import { signInUser } from '../helpers/auth';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +27,9 @@ const NavBar = () => {
             </NavItem>
             <NavItem>
               <Link className="nav-link" to="/students">Student Cards</Link>
+            </NavItem>
+            <NavItem>
+              <Button color='info' onClick={signInUser}>Sign In</Button>
             </NavItem>
           </Nav>
         </Collapse>

@@ -10,5 +10,3 @@ const signOutUser = () => new Promise((resolve, reject) => {
 });
 
 export { signInUser, signOutUser };
-
-// THIS FILE DOES NOT YET DO ANYTHING
