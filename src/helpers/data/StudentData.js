@@ -34,10 +34,14 @@ const updateStudent = (student) => new Promise((resolve, reject) => {
 
 const getSingleStudent = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/students/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+    .then((student) => resolve(student.data))
     .catch((error) => reject(error));
 });
 
 export {
-  addStudent, getStudents, deleteStudent, updateStudent, getSingleStudent
+  addStudent,
+  getStudents,
+  deleteStudent,
+  updateStudent,
+  getSingleStudent
 };

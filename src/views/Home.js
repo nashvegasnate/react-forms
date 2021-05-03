@@ -6,7 +6,7 @@ export default function Home({ user }) {
     <div>
       { user
         ? <h1>Hello, {user.fullName}</h1>
-        : <h1>Hello, World!</h1>
+        : <h1>Hello, Students!</h1>
       }
     </div>
   );
