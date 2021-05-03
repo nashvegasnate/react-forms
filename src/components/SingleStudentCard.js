@@ -6,7 +6,7 @@ export default function SingleStudentCard({ children, student }) {
     <div>
       <h1>Student: {student.name }</h1>
         {children}
-      <footer>This is the footer</footer>
+      {/* <footer>This is the footer</footer> */}
     </div>
   );
 }

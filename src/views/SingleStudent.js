@@ -16,9 +16,9 @@ export default function SingleStudent() {
   return (
     <div>
       <SingleStudentCard student={student}>
-        <h2>{student.name}</h2>
-        <h3>{student.teacher}</h3>
-        <h3>{student.grade}</h3>
+        <h2>Student Name: {student.name}</h2>
+        <h3>Teacher: {student.teacher}</h3>
+        <h3>Grade: {student.grade}</h3>
       </SingleStudentCard>
     </div>
   );
