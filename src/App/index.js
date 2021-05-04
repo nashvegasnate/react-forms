@@ -28,12 +28,13 @@ function App() {
         setUser(false);
       }
     });
-  });
+  }, []);
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <Routes
+        user={user}
         students={students}
         setStudents={setStudents}
       />
